@@ -1,0 +1,118 @@
+{
+  "layer": "top",
+    "height": 10,
+    "modules-left": ["custom/arch", "hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["backlight","pulseaudio", "memory", "battery", "network"],
+    "custom/arch": {
+      "format": "<span foreground=\"#f7768e\"> </span>",
+      "on-click": "rofi -show drun"
+    },
+    "hyprland/workspaces": {
+      "format": "{icon}",
+      "on-click": "activate",
+      "all-outputs": true,
+      "persistent_workspaces" :{
+          "1": [],
+	 		    "2": [],
+	 		    "3": [],
+	 		    "4": [],
+	 		    "5": [],
+	 		    "6": [],
+	 		    "7": [],
+	 		    "8": [],
+	 		    "9": [],
+	 		    "10": []
+        },
+        "format-icons": {
+                "1": "1",
+             		"2": "2",
+             		"3": "3",
+             		"4": "4",
+             		"5": "5",
+             		"6": "6",
+             		"7": "7",
+             		"8": "8",
+             		"9": "9",
+             		"10": "10"
+          }
+    },
+    "clock": {
+      "format": "<span color='#b69bf1'> </span>{:%H:%M}",
+    "format-alt": "<span foreground='#b69bf1'>󰃰 </span><span>{:%I:%M %p %a %d}</span>",
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "backlight": {
+      "device": "amdgpu_b10",
+      "format": "<span color='#d9b172'>{icon}</span> {percent}%",
+      "tooltip-format": "Brightness {percent}%",
+      "format-icons": ["", "", "", "", "", "", "", "", ""],
+      "on-click": "sh -c 'brightnessctl -e4 -n2 set 5%+' dev>>null",
+      "on-click-right": "sh -c 'brightnessctl -e4 -n2 set 5%-' dev>>null"
+    },
+    "network": {
+      "interface": "wlan0",
+      "format": "{ifname}",
+      "interval": "1000ms",
+      "format-wifi": "<span color='#90cdfa'> </span> {essid}",
+      "tooltip-format": "<span color='#90cdfa'> </span> {essid} ({signalStrength}%)",
+      "format-ethernet": "{ipaddr}/{cidr} ",
+      "format-disconnected": "<span color='#ff005f'>󰖪 </span> Offline",
+      "on-click": "kitty nmtui"
+    },
+    "battery": {
+      "format": "<span color='#a8cd76'>{icon}</span> {capacity}%",
+      "format-icons": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+        ],
+      "format-charging": "<span color='#a8cd76'></span> {capacity}%"
+    },
+    "pulseaudio": {
+      "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+      "format": "<span color='#f7768e'></span>  {volume}%",
+      "format-muted": "<span color='#f7768e'></span> 0%",
+      "format-icons": {
+       "headphone": "",
+       "hands-free": "",
+       "headset": "",
+       "phone": "",
+       "portable": "",
+       "car": "",
+       "default": ["奔", "墳"]
+    },
+    "on-click-right" : "pavucontrol"
+    },
+    "memory": {
+        "format": "<span foreground='#9ece6a'></span>  {}%",
+        "on-click": "kitty btop"
+    },
+    "tray": {
+    "icon-size": 20,
+    "reverse-direction": true,
+    "spacing": 6
+    },
+    "custom/playerctl": {
+     "format": "{icon}  <span>{}</span>",
+     "return-type": "json",
+     "max-length": 55,
+     "exec": "playerctl -a metadata --format '{\"text\": \"  {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+     "on-click-middle": "playerctl previous",
+     "on-click": "playerctl play-pause",
+     "on-click-right": "playerctl next",
+     "format-icons": {
+       "Paused": "<span foreground='#bb9af7'> </span>",
+       "Playing": "<span foreground='#bb9af7'> </span>"
+     }
+     }
+
+}

@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
+AUTO_CHANGE=false
+INTERVAL=30
+
+for arg in "$@"; do
+  case $arg in
+  --auto)
+    AUTO_CHANGE=true
+    shift
+    ;;
+  --no-auto)
+    AUTO_CHANGE=false
+    shift
+    ;;
+  --interval=*)
+    INTERVAL="${arg#*=}"
+    shift
+    ;;
+  *) ;;
+  esac
+done
+
+if ! pgrep -x swww-daemon >/dev/null 2>&1; then
+  swww-daemon &
+  sleep 0.5
+fi
+
+change_wallpaper() {
+  mapfile -t wallpapers < <(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" \))
+
+  if [ ${#wallpapers[@]} -eq 0 ]; then
+    echo "No wallpapers found in $WALLPAPER_DIR"
+    exit 1
+  fi
+
+  RANDOM_WALLPAPER="${wallpapers[RANDOM % ${#wallpapers[@]}]}"
+  swww img "$RANDOM_WALLPAPER" \
+    --transition-type any \
+    --transition-fps 60 \
+    --transition-duration 1.25 \
+    --transition-bezier .43,1.19,1,.4
+
+  echo "Wallpaper set to: $RANDOM_WALLPAPER"
+}
+
+change_wallpaper
+
+if [ "$AUTO_CHANGE" = true ]; then
+  while true; do
+    sleep "${INTERVAL}m"
+    change_wallpaper
+  done
+fi

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+step="$1"
+[ -z "$step" ] && exit 1
+
+case "$step" in
+    +*) pct="${step#+}"; pct="${pct}%+"; direction="up";;
+    -*) pct="${step#-}"; pct="${pct}%-"; direction="down";;
+    *) exit 1;;
+esac
+
+wpctl set-volume @DEFAULT_AUDIO_SINK@ "$pct"
+
+vol_now="$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)}')"
+
+notify-send "Volume $direction" "Level: $vol_now%"

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+STATEFILE="/tmp/.touchpad_state"
+
+[ -f "$STATEFILE" ] || echo "on" >"$STATEFILE"
+STATE=$(cat "$STATEFILE")
+
+TOUCHPAD=$(hyprctl devices | grep -i touchpad | awk '{$1=$1}1')
+
+if [ "$STATE" = "on" ]; then
+  hyprctl keyword "device[$TOUCHPAD]:enabled" false
+  echo "off" >"$STATEFILE"
+  notify-send -i input-touchpad "Touchpad Disabled" "The touchpad has been turned off."
+else
+  hyprctl keyword "device[$TOUCHPAD]:enabled" true
+  echo "on" >"$STATEFILE"
+  notify-send -i input-mouse "Touchpad Enabled" "The touchpad has been turned on."
+fi

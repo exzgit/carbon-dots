@@ -1,0 +1,45 @@
+#!/bin/bash
+
+cmd="$1"
+opt="$2"
+theme="$3"
+
+set_dark() {
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    gsettings set org.gnome.desktop.interface gtk-theme "${1:-Adwaita-dark}"
+}
+
+set_light() {
+    gsettings set org.gnome.desktop.interface color-scheme 'default'
+    gsettings set org.gnome.desktop.interface gtk-theme "${1:-Adwaita}"
+}
+
+case "$cmd" in
+    dark)
+        set_dark
+        ;;
+    light)
+        set_light
+        ;;
+    -ch)
+        case "$opt" in
+            -d)
+                set_dark "$theme"
+                ;;
+            -l)
+                set_light "$theme"
+                ;;
+            *)
+                exit 1
+                ;;
+        esac
+        ;;
+    *)
+        exit 1
+        ;;
+esac
+
+pkill waybar &
+systemctl --user restart xdg-desktop-portal
+systemctl --user restart waybar.service
+systemctl --user restart swaync.service

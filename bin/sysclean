@@ -1,0 +1,23 @@
+#!/bin/bash
+
+pacman -Rns $(pacman -Qtdq) 2>/dev/null
+
+paccache -r
+
+# paccache -ruk0
+
+if command -v yay >/dev/null 2>&1; then
+    yay -Sc --noconfirm
+fi
+
+if command -v paru >/dev/null 2>&1; then
+    paru -Sc --noconfirm
+fi
+
+sudo journalctl --vacuum-time=3d
+
+rm -rf ~/.cache/thumbnails/*
+
+rm -rf ~/.cache/*
+
+sudo find /var/log -type f -mtime +5 -delete
