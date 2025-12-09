@@ -6,7 +6,7 @@
     "modules-right": ["backlight","pulseaudio", "memory", "battery", "network", "custom/powermenu"],
     "custom/arch": {
       "format": "<span foreground=\"#DF98FE\"> </span>",
-      "on-click": "rofi -show drun"
+      "on-click": "launch-walker"
     },
     "hyprland/workspaces": {
       "format": "{icon}",
