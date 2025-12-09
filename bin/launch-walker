@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec walker run --minwidth 360 --maxwidth 360 --minheight 400 --maxheight 400 "$@"

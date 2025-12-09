@@ -240,7 +240,7 @@ max_height = 100
 
 # SDL and sdl_glsl only support hex code colors, these are the default:
 ; background = '#000000'
-; foreground = '#33ffff'
+; foreground = '#C061CB'
 
 
 # Gradient mode, only hex defined colors are supported,
@@ -249,12 +249,12 @@ max_height = 100
 ; gradient = 0
 
 gradient = 1
-gradient_color_1 = '#3A3B3F'
-gradient_color_2 = '#6F7074'
-gradient_color_3 = '#A7A8AC'
-gradient_color_4 = '#D1D2D6'
+gradient_color_1 = '#C061CB'  # paling terang
+gradient_color_2 = '#9B52C2'
+gradient_color_3 = '#7F44C0'
+gradient_color_4 = '#6840BF'  # paling gelap
 
-; gradient_color_1 = '#59cc33'
+; gradient_color_1 = '#C061CB'
 ; gradient_color_2 = '#80cc33'
 ; gradient_color_3 = '#a6cc33'
 ; gradient_color_4 = '#cccc33'

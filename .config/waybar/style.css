@@ -2,15 +2,27 @@
 
 
 * {
-    all: unset;
+  all: unset;
   border: none;
-  font-family: 'JetBrainsMono Nerd Font' , 'Symbols Only';
+  font-family: "JetBrainsMono Nerd Font";
   font-size: 12px;
   font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
 }
 
 window#waybar {
-    background-color: #1d1f27;
+  background-color: rgba(29, 31, 39, 0.8);
+}
+
+#custom-powermenu {
+  border-radius: 0px;
+  color: #c0caf5;
+  margin-top: 0px;
+  margin-right: 0px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  padding-left: 8px;
+  font-size: 12px;
+  padding-right: 4px;
 }
 
 #custom-arch {
@@ -20,14 +32,13 @@ window#waybar {
   margin-right: 0px;
   padding-top: 1px;
   padding-left: 10px;
+  padding-bottom: 1px;
   font-size: 12px;
   padding-right: 8px;
-  background-color: #1d1f27;
-  border-right: 1px solid #303142;
 }
 
 #workspaces {
-    padding: 0px 4px;
+  padding: 0px 4px;
 }
 
 #workspaces button {
@@ -39,7 +50,7 @@ window#waybar {
 }
 
 #workspaces button.active {
-  color: #2ac3de;
+  color: #C061CB;
 }
 
 #clock, #backlight, #custom-cava,#temperature, #cpu, #pulseaudio, #network, #battery , #tray, #memory ,#custom-playerctl{
@@ -47,6 +58,7 @@ window#waybar {
   color: #c0caf5;
   margin-top: 2px;
   padding-left: 9px;
+  margin-bottom: 2px;
   padding-right: 9px;
   margin-right: 4px;
 }

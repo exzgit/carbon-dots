@@ -3,9 +3,9 @@
     "height": 10,
     "modules-left": ["custom/arch", "hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["backlight","pulseaudio", "memory", "battery", "network"],
+    "modules-right": ["backlight","pulseaudio", "memory", "battery", "network", "custom/powermenu"],
     "custom/arch": {
-      "format": "<span foreground=\"#f7768e\"> </span>",
+      "format": "<span foreground=\"#DF98FE\"> </span>",
       "on-click": "rofi -show drun"
     },
     "hyprland/workspaces": {
@@ -18,33 +18,20 @@
 	 		    "3": [],
 	 		    "4": [],
 	 		    "5": [],
-	 		    "6": [],
-	 		    "7": [],
-	 		    "8": [],
-	 		    "9": [],
-	 		    "10": []
-        },
+         },
         "format-icons": {
-                "1": "1",
-             		"2": "2",
-             		"3": "3",
-             		"4": "4",
-             		"5": "5",
-             		"6": "6",
-             		"7": "7",
-             		"8": "8",
-             		"9": "9",
-             		"10": "10"
+            "default": "󱓻",
+            "active": "󱓼"
           }
     },
     "clock": {
-      "format": "<span color='#b69bf1'> </span>{:%H:%M}",
-    "format-alt": "<span foreground='#b69bf1'>󰃰 </span><span>{:%I:%M %p %a %d}</span>",
+      "format": "<span color='#C061CB'> </span>{:%H:%M}",
+    "format-alt": "<span foreground='#C061CB'>󰃰 </span><span>{:%I:%M %p %a %d}</span>",
       "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
     "backlight": {
       "device": "amdgpu_b10",
-      "format": "<span color='#d9b172'>{icon}</span> {percent}%",
+      "format": "<span color='#C061CB'>{icon}</span> {percent}%",
       "tooltip-format": "Brightness {percent}%",
       "format-icons": ["", "", "", "", "", "", "", "", ""],
       "on-click": "sh -c 'brightnessctl -e4 -n2 set 5%+' dev>>null",
@@ -54,14 +41,14 @@
       "interface": "wlan0",
       "format": "{ifname}",
       "interval": "1000ms",
-      "format-wifi": "<span color='#90cdfa'> </span> {essid}",
-      "tooltip-format": "<span color='#90cdfa'> </span> {essid} ({signalStrength}%)",
+      "format-wifi": "<span color='#C061CB'> </span> {essid}",
+      "tooltip-format": "<span color='#C061CB'> </span> {essid} ({signalStrength}%)",
       "format-ethernet": "{ipaddr}/{cidr} ",
-      "format-disconnected": "<span color='#ff005f'>󰖪 </span> Offline",
+      "format-disconnected": "<span color='#C061CB'>󰖪 </span> Offline",
       "on-click": "kitty nmtui"
     },
     "battery": {
-      "format": "<span color='#a8cd76'>{icon}</span> {capacity}%",
+      "format": "<span color='#C061CB'>{icon}</span> {capacity}%",
       "format-icons": [
         "",
         "",
@@ -75,12 +62,12 @@
         "",
         ""
         ],
-      "format-charging": "<span color='#a8cd76'></span> {capacity}%"
+      "format-charging": "<span color='#C061CB'></span> {capacity}%"
     },
     "pulseaudio": {
       "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-      "format": "<span color='#f7768e'></span>  {volume}%",
-      "format-muted": "<span color='#f7768e'></span> 0%",
+      "format": "<span color='#C061CB'></span>  {volume}%",
+      "format-muted": "<span color='#C061CB'></span> 0%",
       "format-icons": {
        "headphone": "",
        "hands-free": "",
@@ -93,14 +80,19 @@
     "on-click-right" : "pavucontrol"
     },
     "memory": {
-        "format": "<span foreground='#9ece6a'></span>  {}%",
+        "format": "<span foreground='#C061CB'></span>  {}%",
         "on-click": "kitty btop"
     },
     "tray": {
-    "icon-size": 20,
+    "icon-size": 18,
     "reverse-direction": true,
     "spacing": 6
     },
+    "custom/powermenu": {
+      "format": "<span foreground='#C061CB'>⏻ </span>",
+      "tooltip": false,
+    "on-click": "power-menu"
+  },
     "custom/playerctl": {
      "format": "{icon}  <span>{}</span>",
      "return-type": "json",
@@ -110,8 +102,8 @@
      "on-click": "playerctl play-pause",
      "on-click-right": "playerctl next",
      "format-icons": {
-       "Paused": "<span foreground='#bb9af7'> </span>",
-       "Playing": "<span foreground='#bb9af7'> </span>"
+       "Paused": "<span foreground='#C061CB'> </span>",
+       "Playing": "<span foreground='#C061CB'> </span>"
      }
      }
 

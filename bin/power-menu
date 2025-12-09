@@ -1,0 +1,13 @@
+#!/bin/bash
+
+choice=$(printf "Shutdown\nReboot\nSuspend\nHibernate\nLogout\nLock" | walker --minwidth 260 --maxwidth 260 --minheight 300 --maxheight 300 -d -i)
+
+case "$choice" in
+    "Shutdown") systemctl poweroff ;;
+    "Reboot") systemctl reboot ;;
+    "Suspend") systemctl suspend ;;
+    "Hibernate") systemctl hibernate ;;
+    "Logout") loginctl terminate-session $XDG_SESSION_ID ;;
+    "Lock") loginctl lock-session ;;
+esac
+

@@ -5,10 +5,9 @@ sudo pacman -Rns dolphin
 
 echo "installing default packages required"
 sudo pacman -S --needed git base-devel
-sudo pacman -S --noconfirm rofi nvim hyprland kitty swww nautilus firefox cava btop fastfetch
-sudo pacman -S --noconfirm nerd-fonts chafa brightnessctl swaync libnotify flameshot xdg-desktop-portal xdg-desktop-portal-gtk
+sudo pacman -S --noconfirm nvim hyprland kitty swww nautilus firefox cava btop fastfetch
+sudo pacman -S --noconfirm nerd-fonts chafa blueman brightnessctl swaync libnotify flameshot xdg-desktop-portal xdg-desktop-portal-gtk
 sudo pacman -S --noconfirm waybar pavucontrol libreoffice-fresh
-
 
 echo "installing lazy vim"
 git clone https://github.com/LazyVim/starter ~/.config/nvim
@@ -17,6 +16,9 @@ echo "installing aur helper"
 git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 cd ..
 rm -rf yay
+
+echo "installing walker & elephant"
+yay -S walker-bin elephant-bin elephant-providerlist-bin elephant-desktopapplications-bin
 
 echo "installing discord"
 yay -S --noconfirm discord
@@ -46,6 +48,8 @@ source ~/.bashrc
 
 sysclean
 hyprctl reload
+
+ctheme dark
 
 echo "done"
 echo "please reboot system!!!"

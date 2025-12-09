@@ -14,22 +14,6 @@
       "format": "┌──────── Hardware ────────"
     },
     {
-      "type": "host",
-      "key": "├   Host",
-      "keyColor": "white"
-    },
-    {
-      "type": "cpu",
-      "key": "├ CPU",
-      "showPeCoreCount": true,
-      "keyColor": "white"
-    },
-    {
-      "type": "gpu",
-      "key": "├󰍛 GPU",
-      "keyColor": "white"
-    },
-    {
       "type": "memory",
       "key": "├󰍛 RAM",
       "keyColor": "white"
